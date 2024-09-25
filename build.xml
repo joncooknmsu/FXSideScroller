@@ -1,0 +1,48 @@
+<!-- Sample Ant build file for SideScroller -->
+<project name="SideScroller" default="compile">
+
+   <!-- CHANGE THIS FOR YOUR SYSTEM property to allow ant to find javafx-->
+   <property name="javafx" location="/usr/share/openjfx/lib"/>
+
+   <!-- standard compile task, but turn debugging on for source viewing -->
+   <target name="compile" description="compile the source">
+      <javac srcdir="." excludes="nofxml/*.java" includeantruntime="false" debug="true">
+        <compilerarg line="--module-path ${javafx}"/>
+        <compilerarg line="--add-modules javafx.controls,javafx.fxml"/>
+      </javac>
+   </target>
+
+   <!-- standard run task, do "ant run" for this task -->
+   <target name="run" description="run SideScroller" depends="compile">
+      <echo message="Run a SideScroller"/>
+      <java classname="SideScroller" fork="true">
+        <jvmarg line="--module-path ${javafx}"/>
+        <jvmarg line="--add-modules javafx.controls,javafx.fxml"/>
+      </java>
+   </target>
+
+   <!-- standard run task, do "ant run" for this task -->
+   <target name="jar" description="create sidescroller.jar" depends="compile">
+      <echo message="Create sidescroller.jar"/>
+      <jar destfile="sidescroller.jar" manifest="manifest.txt" basedir="." includes="*.class,sidescroller.fxml" />
+   </target>
+
+   <!-- run this program from its jarfile -->
+   <target name="runjar" description="run SideScroller jarfile" depends="jar">
+      <echo message="Run sidescroller.jar"/>
+      <java jar="sidescroller.jar" fork="true">
+        <jvmarg line="--module-path ${javafx}"/>
+        <jvmarg line="--add-modules javafx.controls,javafx.fxml"/>
+      </java>
+   </target>
+
+   <!-- clean up by removing all generated files; do "ant clean" to start afresh -->
+   <target name="clean">
+      <delete>
+         <fileset dir="." includes="*.class"/>
+         <fileset dir="." includes="sidescroller.jar"/>
+      </delete>
+   </target>
+
+</project>
+

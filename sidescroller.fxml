@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="windowPane" maxHeight="700" maxWidth="900" minHeight="100" minWidth="100" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SideScrollController">
+   <top>
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER" style="-fx-background-color: white; -fx-opacity: 1.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#menuFileClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#menuHelpAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <Pane fx:id="gamePane" maxHeight="640" maxWidth="7000" minHeight="640" minWidth="7000" prefHeight="640.0" prefWidth="7000.0" BorderPane.alignment="BOTTOM_LEFT">
+         <children>
+            <Circle id="redBall" fill="#b93824" layoutX="0.0" layoutY="0.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+         </children></Pane>
+   </center>
+   <bottom>
+      <!--<Slider fx:id="speedSlider" onMouseReleased="#speedChanged" BorderPane.alignment="CENTER" /> --><TextField fx:id="textField" editable="false" alignment="CENTER" BorderPane.alignment="CENTER" text="Use the arrow keys to move around the grey game area!"/>
+   </bottom> <!-- onKeyReleased="#speedChanged"  -->
+</BorderPane>
